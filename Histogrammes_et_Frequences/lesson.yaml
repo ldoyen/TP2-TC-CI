@@ -1,0 +1,140 @@
+- Class: meta
+  Course: TP2-TC-CI
+  Lesson: Histogrammes et Frequences
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: exact_question
+  Output: Entrer votre numéro d'étudiant.
+  CorrectAnswer: NULL
+  AnswerTests: num_etud()
+  Hint: Entrer votre numéro d'étudiant.
+
+- Class: mult_question
+  Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP2.
+    Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
+    En effet, si vous ne le faites pas vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes vous pret à commencer cette leçon du TP2. Les questions suivantes correspondent à la partie intitulée "Histogrammes et fréquences".
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: ouvrir_sujet_TP()
+  Hint: Tapez Oui et validez avec la touche Entrée pour commencer votre TP2.
+
+
+- Class: cmd_question
+  Output: Réponse à la question 1a.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr=paste0(e$vs$nom_data,"[1:",e$vs$m1,"]",collapse=""))
+  Hint: Réponse à la question 1a.
+    Faites attention au nom de la variable dans laquelle sont stockées sous R les réalisations de la variable d'intérêt.
+    Faites également attention au fait qu'on ne vous demande pas d'afficher toutes les réalisations de la variable d'intérêt.
+
+- Class: cmd_question
+  Output: Réponse à la question 1b.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|any_of_exprs(paste0("hist(",e$vs$nom_data,"[1:",e$vs$m1,"],freq=FALSE)",collapse=""),paste0("hist(",e$vs$nom_data,"[1:",e$vs$m1,"],freq=F)",collapse=""))
+  Hint: Réponse à la question 1b.
+    Faites attention au nom de la variable dans laquelle sont stockées sous R les réalisations de la variable d'intérêt.
+    Faites également attention au fait qu'on ne vous demande pas de représenter l'histogrammes de toutes les réalisations de la variable d'intérêt.
+
+- Class: mult_question
+  Output: On va maintenant représenter ajouter sur votre histogramme les briques correspondants correspondants aux différentes valeurs.
+    Etes-vous pret pour continuer ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: Oui
+  AnswerTests: briques()
+  Hint: Répondez oui pour continuer le TP.
+
+- Class: mult_question
+  Output: Afin de repérer les différentes briques, on va maintenant associer à chaque brique un numéro.
+    Etes-vous pret pour continuer ?
+  AnswerChoices: Oui;Non
+  CorrectAnswer: Oui
+  AnswerTests: num_briques()
+  Hint: Répondez oui pour continuer le TP.
+
+- Class: text_question
+  Output: Réponse à la question 1c.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: assoc_briques()
+  Hint: Réponse à la question 1c.
+
+- Class: exact_question
+  Output: Réponse à la question 1d, quelle est l'aire d'une brique ?
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|aire_brique()
+  Hint: Réponse à la question 1d, quelle est l'aire d'une brique ?.
+    On vous demande une valeur exacte. N'oubliez pas que R est aussi une calculatrice.
+
+- Class: exact_question
+  Output: Réponse à la question 1d (suite), quelle est l'aire totale sous l'histogramme ?
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal = 1)
+  Hint: Réponse à la question 1d (suite), quelle est l'aire totale sous l'histogramme ?
+
+- Class: text_question
+  Output: Réponse à la question 1e.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: inf_briques()
+  Hint: Réponse à la question 1e.
+
+- Class: exact_question
+  Output: Réponse à la question 1f.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|aireinf_brique()
+  Hint: Réponse à la question 1f.
+    On vous demande une valeur exacte. N'oubliez pas que R est aussi une calculatrice.
+
+- Class: exact_question
+  Output: Réponse à la question 1g.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|aireinf_brique()
+  Hint: Réponse à la question 1g.
+    On vous demande une valeur exacte. N'oubliez pas que R est aussi une calculatrice.
+
+- Class: cmd_question
+  Output: Réponse à la question 1h.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|any_of_exprs(paste0("mean(",e$vs$nom_data,"[1:",e$vs$m1,"] <=",e$vs$psup,")",collapse=""),paste0("mean(",e$vs$psup,">=",e$vs$nom_data,"[1:",e$vs$m1,"])",collapse=""))
+  Hint: Réponse à la question 1h.
+
+- Class: cmd_question
+  Output: Réponse à la question 1j.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|any_of_exprs(paste0("hist(",e$vs$nom_data,"[1:",e$vs$m2,"],freq=FALSE)",collapse=""),paste0("hist(",e$vs$nom_data,"[1:",e$vs$m2,"],freq=F)",collapse=""),paste0("hist(",e$vs$nom_data,",freq=FALSE)",collapse=""),paste0("hist(",e$vs$nom_data,",freq=F)",collapse=""))
+  Hint: Réponse à la question 1j.
+
+- Class: mult_question
+  Output: Réponse à la question 1k.
+  AnswerChoices: une aire; un trait verticale; un trait horizontale ; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal='une aire')
+  Hint: Réponse à la question 1k.
+
+- Class: cmd_question
+  Output: Réponse à la question 1l.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|(expr_uses_func('mean')&calc_freq())
+  Hint: Réponse à la question 1l.
+
+- Class: mult_question
+  Output: Réponse à la question 1n.
+  AnswerChoices: une fréquence; une probabilité; une moyenne; une espérance; une variance empirique; une variance théorique; un écart-type empirique; un écart-type théorique; un quantile empirique; un quantile théorique; un histogramme; une densité; aucune réponse ne convient
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal='une probabilité')
+  Hint: Réponse à la question 1n.
+
+
+- Class: exact_question
+  Output: Vous allez maintenant valider cette première leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 2. Quelle est votre groupe ?
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Si vous avez validé cette leçon, nous vous conseillons également de copier l'intégralité de la clé qui vient de s'imprimer juste au-dessus (entre les deux guillemets après le symbole [1]) et de sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 1 du TP2. Elle peut vous être demandée.
+
+- Class: text
+  Output: Maintenant à vous de faire les leçons suivantes de ce TP2.

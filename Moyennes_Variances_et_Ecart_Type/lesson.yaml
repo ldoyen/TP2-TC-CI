@@ -1,0 +1,122 @@
+- Class: meta
+  Course: TP2-TC-CI
+  Lesson: Moyennes Variances et Ecart Type
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: exact_question
+  Output: Entrer votre numéro d'étudiant.
+  CorrectAnswer: NULL
+  AnswerTests: num_etud()
+  Hint: Entrer votre numéro d'étudiant.
+
+- Class: mult_question
+  Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP2.
+    Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
+    En effet, si vous ne le faites pas vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes vous pret à commencer cette leçon du TP2. Les questions suivantes correspondent à la partie intitulée "Moyennes, Variances et Ecart-Type".
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: ouvrir_sujet_TP()
+  Hint: Tapez Oui et validez avec la touche Entrée pour commencer votre TP2.
+
+- Class: cmd_question
+  Output: Réponse à la question 2a.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer(TRUE)|any_of_exprs(paste0("hist(",e$vs$nom_data,"[1:",e$vs$m2,"],freq=FALSE)",collapse=""),paste0("hist(",e$vs$nom_data,"[1:",e$vs$m2,"],freq=F)",collapse=""),paste0("hist(",e$vs$nom_data,",freq=FALSE)",collapse=""),paste0("hist(",e$vs$nom_data,",freq=F)",collapse=""))
+  Hint: Réponse à la question 2a.
+    Faites attention au nom de la variable dans laquelle sont stockées sous R les réalisations de la variable d'intérêt.
+
+- Class: cmd_question
+  Output: Réponse à la question 2b.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|calc_moyenne()
+  Hint: Réponse à la question 2b.
+    Faites attention au nom de la variable dans laquelle sont stockées sous R les réalisations de la variable d'intérêt.
+
+- Class: mult_question
+  Output: Réponse à la question 2d. Avec quoi peut-on représenter cette moyenne sur l'histogramme de la question 2a ?
+  AnswerChoices: une aire; un trait verticale; un trait horizontale ; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal='un trait verticale')
+  Hint: Réponse à la question 2d. Avec quoi peut-on représenter cette moyenne sur l'histogramme de la question 2a ?
+
+- Class: exact_question
+  Output: Réponse à la question 2d (suite). A quelle abscisse doit-on positionner ce trait verticale représentant la moyenne (donner une valeur 0.0001 près)?
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|approx_moyenne()
+  Hint: Réponse à la question 2d(suite). A quelle abscisse doit-on positionner ce trait verticale représentant la moyenne (donner une valeur 0.0001 près)?
+
+- Class: mult_question
+  Output: Réponse à la question 2e.
+  AnswerChoices: Oui; Non
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal='Oui')
+  Hint: Réponse à la question 2e.
+
+- Class: mult_question
+  Output: Réponse à la question 2f.
+  AnswerChoices: une fréquence; une probabilité; une moyenne; une espérance; une variance empirique; une variance théorique; un écart-type empirique; un écart-type théorique; un quantile empirique; un quantile théorique; un histogramme; une densité; aucune réponse ne convient
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal='une espérance')
+  Hint: Réponse à la question 2f.
+
+- Class: cmd_question
+  Output: Réponse à la question 2h.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|calc_variance()
+  Hint: Réponse à la question 2h.
+
+- Class: cmd_question
+  Output: Réponse à la question 2j.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|calc_ecarttype()
+  Hint: Réponse à la question 2j.
+
+- Class: mult_question
+  Output: Réponse à la question 2l. Avec quoi peut-on représenter cet écart-type sur l'histogramme de la question 2a ?
+  AnswerChoices: une aire; un trait verticale; un trait horizontale ; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal='une double flèche horizontale')
+  Hint: Réponse à la question 2l. Avec quoi peut-on représenter cet écart-type sur l'histogramme de la question 2a ?
+
+- Class: exact_question
+  Output: Réponse à la question 2d (suite). A quelle abscisse doit se trouver le milieu de cette double flèche (donner une valeur 0.0001 près)?
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|approx_moyenne(FALSE)
+  Hint: Réponse à la question 2d(suite). A quelle abscisse doit se trouver le milieu de cette double flèche (donner une valeur 0.0001 près)?
+
+- Class: exact_question
+  Output: Réponse à la question 2d (resuite). Quelle doit être la largeur de cette double flèche (donner une valeur 0.0001 près)?
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|approx_2sd()
+  Hint: Réponse à la question 2d(resuite). Quelle doit être la largeur de cette double flèche (donner une valeur 0.0001 près)?
+
+- Class: mult_question
+  Output: Réponse à la question 2m.
+  AnswerChoices: Oui; Non
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal='Oui')
+  Hint: Réponse à la question 2m.
+
+- Class: mult_question
+  Output: Réponse à la question 2n.
+  AnswerChoices: une fréquence; une probabilité; une moyenne; une espérance; une variance empirique; une variance théorique; un écart-type empirique; un écart-type théorique; un quantile empirique; un quantile théorique; un histogramme; une densité; aucune réponse ne convient
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal='un écart-type théorique')
+  Hint: Réponse à la question 2n.
+
+
+- Class: exact_question
+  Output: Vous allez maintenant valider cette deuxième leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 2 du TP 2. Quelle est votre groupe ?
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Si vous avez validé cette leçon, nous vous conseillons également de copier l'intégralité de la clé qui vient de s'imprimer juste au-dessus (entre les deux guillemets après le symbole [1]) et de sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 2 du TP2. Elle peut vous être demandée.
+
+- Class: text
+  Output: Maintenant à vous de faire la dernière leçon de ce TP2.
