@@ -23,73 +23,6 @@ getLog <- function(){
   getState()$log
 }
 
-Hist.EAP <- function(x,breaks,add=FALSE,xlim,ylim,rect=TRUE,col,lty=par("lty"),lwd=par("lwd"),when=TRUE,numeroter=FALSE,fuzzy=1e-7,...) {
-  x[which(x!=min(x))]<-x[which(x!=min(x))]-fuzzy
-  intervalle<-pretty(x,breaks)
-  centers<-(intervalle[2:(length(intervalle))]+intervalle[1:(length(intervalle)-1)])/2
-  rang<-c(intervalle[1],intervalle[length(intervalle)])
-  pas<-intervalle[2]-intervalle[1]
-  pas2<-pas/2.0
-  cuts <- cut(x,br=intervalle,include.lowest=TRUE)
-  eff <- as.vector(table(cuts))
-  params <- names(list(...))
-  par("usr")->usr
-  if(!add && missing(xlim)) xlim <- rang
-  tot <- sum(eff)
-  high <- 1/tot/pas
-  high2 <- high/2.0
-  if(!add && missing(ylim)) ylim <- c(0,high*max(eff))
-  if(!add) {
-    plot(0,0,type="n",xlim=xlim,ylim=ylim,...)
-  }
-  x.bricks <- rep(centers,eff)
-  ## les hauteurs des briques !!!
-  y.bricks <- unlist(sapply(eff[eff>0],function(i) seq(1,i)))*high
-  if(missing(col)) col <- cm.colors(tot)
-  else if(length(col)<tot) {
-    lcol <- length(col)
-    col <- rep(col,lcol*(tot%/%lcol)+1)[1:tot]
-  }
-  ## les briques
-  if(rect && any(when)) {
-    order(order(cuts))->init.order
-    bricks.x <- x.bricks[init.order]
-    bricks.y <- y.bricks[init.order]
-    rect(bricks.x[when]-pas2,bricks.y[when]-high,bricks.x[when]+pas2,bricks.y[when],col=col[when])
-    if(numeroter) text(x.bricks,y.bricks-high/2,1:length(x.bricks))
-  }
-  ## le contour
-  freq <- eff*high
-  br.contour <- c(centers[1]-pas2,centers+pas2)
-  x.contour <- rep(br.contour,rep(2,length(br.contour)))
-  y.contour <- c(0,rep(freq,rep(2,length(freq))),0)
-  lines(x.contour,y.contour,lwd=lwd,lty=lty)
-  abline(h=0)
-  if(add)
-    assign(".histo.EAP",list(x=x,pas=pas,x.bricks=x.bricks,y.bricks=y.bricks,centers=centers,counts=eff,col=col,x.contour=x.contour,y.contour=y.contour),envir=.randomEnv)
-  else
-    assign(".histo.EAP",list(x=x,pas=pas,x.bricks=x.bricks,y.bricks=y.bricks,centers=centers,counts=eff,col=col,xlim=xlim,ylim=ylim,x.contour=x.contour,y.contour=y.contour),envir=.randomEnv)
-
-  cumeff<-c(0,cumsum(eff))
-  index<-sort(x,index.return=TRUE)$ix
-  num_brique_min<-1:length(x)
-  num_brique_max<-1:length(x)
-  for(i in 1:length(x)){
-    j<-max(which(cumeff<which(index==i)))
-    num_brique_min[i]<-cumeff[j]+1
-    num_brique_max[i]<-cumeff[j+1]
-  }
-
-  return(list(
-    centers=centers,
-    pas=pas,
-    eff=eff,
-    i_brique_min=num_brique_min,
-    i_brique_max=num_brique_max
-  ))
-}
-
-
 Choix_sujet_etudiant<-function(num_etud,nb_sujet=5){
   #return(floor((num_etud-floor(num_etud/100)*100)/20))
   set.seed(num_etud)
@@ -240,101 +173,36 @@ test_passer<-function(){
   return(res)
 }
 
-briques<-function(){
-  e <- get("e", parent.frame())
-  selection <- getState()$val
-  res<-FALSE
-  if(selection == "Oui"){
-    caracHist<-hist(get(e$vs$nom_data)[1:e$vs$m1],plot=FALSE)
-    Hist.EAP(get(e$vs$nom_data)[1:e$vs$m1],col="white",breaks=length(caracHist$breaks)-1,bty="n",main=paste0('Histogram of ',e$vs$nom_data,"[1:",e$vs$m1,"]",collapse=""),xlab=paste0(e$vs$nom_data,"[1:",e$vs$m1,"]",collapse=""),ylab="Density")
-    res<-TRUE
-  }
-  return(res)
-}
-
-num_briques<-function(){
-  e <- get("e", parent.frame())
-  selection <- getState()$val
-  res<-FALSE
-  if(selection == "Oui"){
-    caracHist<-hist(get(e$vs$nom_data)[1:e$vs$m1],plot=FALSE)
-    info_hist<-Hist.EAP(get(e$vs$nom_data)[1:e$vs$m1],col="white",numeroter=TRUE,breaks=length(caracHist$breaks)-1,bty="n",main=paste0('Histogram of ',e$vs$nom_data,"[1:",e$vs$m1,"]",collapse=""),xlab=paste0(e$vs$nom_data,"[1:",e$vs$m1,"]",collapse=""),ylab="Density")
-    e$info_hist<-info_hist
-    res<-TRUE
-  }
-  return(res)
-}
-
-assoc_briques<-function(){
-  e <- get("e", parent.frame())
-  if(grepl("passer()",paste0(e$val,collapse = ""))){
-    res<-TRUE
-    if(length(e$log$mon_skip)>0) e$log$skipped[1:length(e$log$mon_skip)]<-e$log$mon_skip
-    e$log$mon_skip<-e$log$skipped
-    e$log$mon_skip[length(e$log$mon_skip)+1]<-TRUE
-  } else {
-    if(class(try(eval(parse(text=paste0("c(",paste0(e$val,collapse=","),")"))),silent=TRUE))=="try-error"){
-      res<-FALSE
-      pb<-"Vous devez indiquer les num\xE9ro des briques en les s\xE9parant par des virgules !"
-      Encoding(pb) <- "latin1"
-      message(pb)
-    } else {
-      reponse<-eval(parse(text=paste0("c(",paste0(e$val,collapse=","),")")))
-      res<-sum(sort(reponse)==(1:(length(reponse))))==(e$vs$m1)
-      if(res){
-        for(i in 1:(e$vs$m1)) {res<-res&((reponse[i])>=(e$info_hist$i_brique_min[i]))&((reponse[i])<=(e$info_hist$i_brique_max[i]))}
-      } else {
-        pb<-"Chaque num\xE9ro de brique ne peut apparaitre q'une seule fois !"
-        Encoding(pb) <- "latin1"
-        message(pb)
-      }
-
-    }
-  }
-  return(res)
-}
-
-inf_briques<-function(){
-  e <- get("e", parent.frame())
-  if(grepl("passer()",paste0(e$val,collapse = ""))){
-    res<-TRUE
-    if(length(e$log$mon_skip)>0) e$log$skipped[1:length(e$log$mon_skip)]<-e$log$mon_skip
-    e$log$mon_skip<-e$log$skipped
-    e$log$mon_skip[length(e$log$mon_skip)+1]<-TRUE
-  } else {
-    if(class(try(eval(parse(text=paste0("c(",paste0(e$val,collapse=","),")"))),silent=TRUE))=="try-error"){
-      res<-FALSE
-      pb<-"Vous devez indiquer les num\xE9ro des briques en les s\xE9parant par des virgules !"
-      Encoding(pb) <- "latin1"
-      message(pb)
-    } else {
-      reponse<-eval(parse(text=paste0("c(",paste0(e$val,collapse=","),")")))
-      res<-length(unique(reponse))==(length(reponse))
-      if(res){
-        ok<-(get(e$vs$nom_data)[1:e$vs$m1])<=(e$vs$psup)
-        res<-res&(length(reponse) == sum(ok))& prod(reponse<=max(e$info_hist$i_brique_max[which(ok)]))
-      } else {
-        pb<-"Chaque num\xE9ro de brique ne peut apparaitre q'une seule fois !"
-        Encoding(pb) <- "latin1"
-        message(pb)
-      }
-
-    }
-  }
-  return(res)
-}
-
-aire_brique<-function(){
+taille_echantillon<-function(){
     e <- get("e", parent.frame())
-    return(prod(e$val==(1/e$vs$m1)))
+    return(e$val==e$vs$n)
 }
 
-aireinf_brique<-function(){
+valeur_echantillon<-function(){
     e <- get("e", parent.frame())
-    return(prod(e$val==( sum((get(e$vs$nom_data)[1:e$vs$m1])<=(e$vs$psup)) /e$vs$m1)))
+    selection <- getState()$val
+    return(selection==(if(e$vs$qalea) "La première personne interrogée dans le futur échantillon est prète à voter pour le candidat" else "Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individus correspond à voter en faveur du candidat"))
 }
 
-calc_freq<-function(){
+ON_valeur_echantillon<-function(){
     e <- get("e", parent.frame())
-    return(prod(e$val==( mean(get(e$vs$nom_data)>e$vs$pinf & get(e$vs$nom_data)<= e$vs$psup) )))
+    selection <- getState()$val
+    return(selection==(if(e$vs$qalea) "Non, car elle est aléatoire" else "Oui"))
+}
+
+taille_p<-function(){
+    e <- get("e", parent.frame())
+    return(e$val==e$vs$m2)
+}
+
+valeur_p<-function(){
+    e <- get("e", parent.frame())
+    selection <- getState()$val
+    return(selection==(if(e$vs$qalea) "Dans la deuxième réalisation de l'échantillon, l'ensemble des intentions de vote simulées sont en faveur du candidat" else "L'ensemble des personnes intérogées dans le futur échantillon sont prètes à voter pour le candidat"))
+}
+
+ON_valeur_p<-function(){
+    e <- get("e", parent.frame())
+    selection <- getState()$val
+    return(selection==(if(e$vs$qalea) "Oui" else "Non, car elle est aléatoire"))
 }

@@ -24,8 +24,10 @@ getLog <- function(){
 }
 
 
-Choix_sujet_etudiant<-function(num_etud){
-  return(floor((num_etud-floor(num_etud/100)*100)/20))
+Choix_sujet_etudiant<-function(num_etud,nb_sujet=5){
+  #return(floor((num_etud-floor(num_etud/100)*100)/20))
+  set.seed(num_etud)
+  return(sample(1:nb_sujet,1))
 }
 
 genere_data<-function(vs){
@@ -54,7 +56,8 @@ num_etud<-function(){
 	nom_data=c("pAest","pB_est","pC_Est","pDEst","p_X_est"),
 	pageWebsujet=c("https://toltex.u-ga.fr/VAM/TP2/sujet.html","https://toltex.u-ga.fr/VAM/TP2/sujet_tp.html","https://toltex.u-ga.fr/VAM/TP2/sujet__tp.html","https://toltex.u-ga.fr/VAM/TP2/sujet_tp2.html","https://toltex.u-ga.fr/VAM/TP2/sujet__tp2.html"),
 	Y=c("Y^A","Y^B","Y^C","Y^D","Y^X"),
-	y=c("y^A","y^B","y^C","y^D","y^X"))
+	y=c("y^A","y^B","y^C","y^D","y^X"),
+	qalea=c(FALSE,TRUE,TRUE,FALSE,FALSE))
   ####
 
   e <- get("e", parent.frame())
@@ -69,7 +72,7 @@ num_etud<-function(){
     res<-readline("Tapez 1, si c'est bien le cas, sinon appuyez sur n'importe quelle autre touche. Puis validez.")==1
     if (res){
       e$num_etud<-num_etud
-      e$num_sujet <- Choix_sujet_etudiant(num_etud)
+      e$num_sujet <- Choix_sujet_etudiant(num_etud,length(variable_sujet$m1))
       set.seed(num_etud)
       vs<-variable_sujet
       for (i in 1:length(vs)){

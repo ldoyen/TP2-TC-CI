@@ -1,0 +1,119 @@
+- Class: meta
+  Course: TP2-TC-CI
+  Lesson: Introduction
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: exact_question
+  Output: Entrer votre numéro d'étudiant.
+  CorrectAnswer: NULL
+  AnswerTests: num_etud()
+  Hint: Entrer votre numéro d'étudiant.
+
+- Class: mult_question
+  Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP2.
+    Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
+    En effet, si vous ne le faites pas vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes vous pret à commencer cette leçon du TP2. Les questions suivantes correspondent à la partie intitulée "Introduction".
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: ouvrir_sujet_TP()
+  Hint: Tapez Oui et validez avec la touche Entrée pour commencer votre TP2.
+
+- Class: exact_question
+  Output: Réponse à la question 0a.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|taille_echantillon()
+  Hint: Réponse à la question 0a.
+
+- Class: exact_question
+  Output: Réponse à la question 0b.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|taille_echantillon()
+  Hint: Réponse à la question 0b.
+
+- Class: mult_question
+  Output: Réponse à la question 0c.
+  AnswerChoices: L'ensemble des réels;
+    L'ensemble des réels positifs;
+    L'ensemble des réels compris entre 0 et 1 (0 et 1 inclus);
+    L'ensemble des réels compris entre 0 et 1 (0 et 1 exclus);
+    0 ou 1
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal="0 ou 1")
+  Hint: Réponse à la question 0c.
+
+- Class: mult_question
+  Output: Réponse à la question 0d.
+  AnswerChoices: La première personne interrogée dans le futur échantillon est prète à voter pour le candidat;
+    La deuxième personne interrogée dans le futur échantillon est prète à voter pour le candidat;
+    Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individus correspond à voter en faveur du candidat;
+    Dans la première réalisation de l'échantillon, l'intention de vote simulée pour le deuxième individus correspond à voter en faveur du candidat;
+    L'ensemble des personnes intérogées dans le futur échantillon sont prètes à voter pour le candidat;
+    Dans la deuxième réalisation de l'échantillon, l'ensemble des intentions de vote simulées sont en faveur du candidat
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|valeur_echantillon()
+  Hint: Réponse à la question 0d.
+
+- Class: mult_question
+  Output: Réponse à la question 0e.
+  AnswerChoices: Oui;
+    Non, car elle est aléatoire;
+    Non, car cela reviendrait à interroger un trop grand nombre d'individus, il faut donc considérer un échantillon;
+    Non, car elle est fixée arbitrairement
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|ON_valeur_echantillon()
+  Hint: Réponse à la question 0e.
+
+- Class: exact_question
+  Output: Réponse à la question 0f.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|taille_p()
+  Hint: Réponse à la question 0f.
+
+- Class: mult_question
+  Output: Réponse à la question 0g.
+  AnswerChoices: L'ensemble des réels;
+    L'ensemble des réels positifs;
+    L'ensemble des réels compris entre 0 et 1 (0 et 1 inclus);
+    L'ensemble des réels compris entre 0 et 1 (0 et 1 exclus);
+    0 ou 1
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal="L'ensemble des réels compris entre 0 et 1 (0 et 1 inclus)")
+  Hint: Réponse à la question 0g.
+
+- Class: mult_question
+  Output: Réponse à la question 0h.
+  AnswerChoices: La première personne interrogée dans le futur échantillon est prète à voter pour le candidat;
+    La deuxième personne interrogée dans le futur échantillon est prète à voter pour le candidat;
+    Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individus correspond à voter en faveur du candidat;
+    Dans la première réalisation de l'échantillon, l'intention de vote simulée pour le deuxième individus correspond à voter en faveur du candidat;
+    L'ensemble des personnes intérogées dans le futur échantillon sont prètes à voter pour le candidat;
+    Dans la deuxième réalisation de l'échantillon, l'ensemble des intentions de vote simulées sont en faveur du candidat
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|valeur_p()
+  Hint: Réponse à la question 0h.
+
+- Class: mult_question
+  Output: Réponse à la question 0i.
+  AnswerChoices: Oui;
+    Non, car elle est aléatoire;
+    Non, car cela reviendrait à interroger un trop grand nombre d'individus, il faut donc considérer un échantillon;
+    Non, car elle est fixée arbitrairement
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|ON_valeur_p()
+  Hint: Réponse à la question 0i.
+
+- Class: exact_question
+  Output: Vous allez maintenant valider cette première leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 2. Quelle est votre groupe ?
+  CorrectAnswer: NULL
+  AnswerTests: submit_log()
+  Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Si vous avez validé cette leçon, nous vous conseillons également de copier l'intégralité de la clé qui vient de s'imprimer juste au-dessus (entre les deux guillemets après le symbole [1]) et de sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 1 du TP2. Elle peut vous être demandée.
+
+- Class: text
+  Output: Maintenant à vous de faire les leçons suivantes de ce TP2.
