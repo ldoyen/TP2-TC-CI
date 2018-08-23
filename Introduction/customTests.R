@@ -62,7 +62,7 @@ num_etud<-function(){
   e <- get("e", parent.frame())
   num_etud <- as.integer(e$val)
   res<-TRUE
-  if (is.na(num_etud)|(num_etud<100)){
+  if (is.na(num_etud)|(num_etud<0)){
     res<-FALSE
     } else {
     confirmation<-paste("Vous confirmez que votre num\xE9ro d'\xE9tudiant est", num_etud, "?",sep=" ")
