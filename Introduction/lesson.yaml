@@ -113,7 +113,7 @@
   Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
 
 - Class: text
-  Output: Si vous avez validé cette leçon, nous vous conseillons également de copier l'intégralité de la clé qui vient de s'imprimer juste au-dessus (entre les deux guillemets après le symbole [1]) et de sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 1 du TP2. Elle peut vous être demandée.
+  Output: Pour valider cette leçon, vous devez également copier l'intégralité de la clé qui vient de s'imprimer juste au-dessus et sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 1 du TP2. Elle peut vous être demandée.
 
 - Class: text
   Output: Maintenant à vous de faire les leçons suivantes de ce TP2.
