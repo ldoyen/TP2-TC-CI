@@ -107,7 +107,7 @@
   Hint: Réponse à la question 0i.
 
 - Class: exact_question
-  Output: Vous allez maintenant valider cette première leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 2. Quelle est votre groupe ?
+  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Quelle est votre groupe ?
   CorrectAnswer: NULL
   AnswerTests: submit_log()
   Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
@@ -118,16 +118,17 @@
     Avez-vous validé votre Google Form ?
   AnswerChoices: Oui;Non
   CorrectAnswer: NULL
-  AnswerTests: email_log()
-  Hint: Vous devez valider le GoogleForm ouvert dans votre navigateur web sans le modifier. L'avez-vous fait ?
+  AnswerTests: googleForm_log()
+  Hint: Vous devez valider le Google Form, sans le modifier. L'avez-vous fait ?
 
 - Class: mult_question
   Output: Swirl a maintenant créé un email dans votre utilitaire de messagerie. Vous devez envoyer cet email, sans le modifier, pour finir de valider cette leçon du TP.
     Avez-vous envoyé l'email créé par swirl ?
   AnswerChoices: Oui;Non
   CorrectAnswer: NULL
-  AnswerTests: omnitest(correctVal='Oui')
+  AnswerTests: email_log()
   Hint: Vous devez envoyer l'email créé par swirl dans votre messagerie, sans le modifier. L'avez-vous fait ?
+
 
 - Class: text
   Output: Maintenant à vous de faire les leçons suivantes de ce TP2.

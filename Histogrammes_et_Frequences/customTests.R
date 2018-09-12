@@ -200,24 +200,38 @@ if(selection %in% 1:5){
   names(log_tbl) <- c(e$num_etud, nom_etud, prenom_etud,log_$lesson_name,e$num_sujet)
   write.csv(log_tbl, file = temp, row.names = FALSE)
   encoded_log <- base64encode(temp)
-  browseURL(paste0(pre_fill_link, encoded_log))
+  e <- get("e", parent.frame())
+  e$url_googleForm<-paste0(pre_fill_link, encoded_log)
+  #browseURL(paste0(pre_fill_link, encoded_log)
+  readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrer.")
+  browseURL(e$url_googleForm)
 
-    e <- get("e", parent.frame())
+  e <- get("e", parent.frame())
     if(selection %in% c(1,2,3)) e$adresse_email<-"laurent.doyen@iut2.univ-grenoble-alpes.fr" else e$adresse_email<-"marie-jose.martinez@iut2.univ-grenoble-alpes.fr"
     e$sujet_email<-paste0("**TP2-TC-CI**"," G",selection,", ",log_$lesson_name,", ", nom_etud,collapse="")
     e$corp_email<-encoded_log
-}
+  }
   return(res)
 }
 
+googleForm_log<-function(){
+  e <- get("e", parent.frame())
+  if(e$val=="Non"){
+    browseURL(e$url_googleForm)
+  } else {
+   readline("Swirl va maintenant ouvrir un email dans votre logicel de messagerie. Tapez sur la touche Entrer.")
+    email(e$adresse_email,e$sujet_email,e$corp_email)
+  }
+  return(e$val=="Oui")
+}
+
+
 email_log<-function(){
-    e <- get("e", parent.frame())
-    res<-FALSE
-    if(e$val=="Oui"){
-      email(e$adresse_email,e$sujet_email,e$corp_email)
-      res<-TRUE
-    }
-    return(res)
+  e <- get("e", parent.frame())
+  if(e$val=="Non"){
+    email(e$adresse_email,e$sujet_email,e$corp_email)
+  }
+  return(e$val=="Oui")
 }
 
 #answear test to known if the value of the answear is between b_inf and b_sup
