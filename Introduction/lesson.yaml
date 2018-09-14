@@ -7,16 +7,16 @@
   Version: 1
 
 - Class: exact_question
-  Output: Entrer votre numéro d'étudiant.
+  Output: Entrez votre numéro d'étudiant.
   CorrectAnswer: NULL
   AnswerTests: num_etud()
-  Hint: Entrer votre numéro d'étudiant.
+  Hint: Entrez votre numéro d'étudiant.
 
 - Class: mult_question
   Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP2.
     Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
-    En effet, si vous ne le faites pas vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
-    Etes vous pret à commencer cette leçon du TP2. Les questions suivantes correspondent à la partie intitulée "Introduction".
+    En effet, si vous ne le faites pas, vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes-vous prêt à commencer cette leçon du TP2 ? Les questions suivantes correspondent à la partie intitulée "Introduction".
   AnswerChoices: Oui;Non
   CorrectAnswer: NULL
   AnswerTests: ouvrir_sujet_TP()
@@ -47,11 +47,11 @@
 
 - Class: mult_question
   Output: Réponse à la question 0d.
-  AnswerChoices: La première personne interrogée dans le futur échantillon est prète à voter pour le candidat;
-    La deuxième personne interrogée dans le futur échantillon est prète à voter pour le candidat;
-    Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individus correspond à voter en faveur du candidat;
-    Dans la première réalisation de l'échantillon, l'intention de vote simulée pour le deuxième individus correspond à voter en faveur du candidat;
-    L'ensemble des personnes intérogées dans le futur échantillon sont prètes à voter pour le candidat;
+  AnswerChoices: La première personne interrogée dans le futur échantillon est prête à voter pour le candidat;
+    La deuxième personne interrogée dans le futur échantillon est prête à voter pour le candidat;
+    Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individu correspond à voter en faveur du candidat;
+    Dans la première réalisation de l'échantillon, l'intention de vote simulée pour le deuxième individu correspond à voter en faveur du candidat;
+    L'ensemble des personnes interrogées dans le futur échantillon sont prêtes à voter pour le candidat;
     Dans la deuxième réalisation de l'échantillon, l'ensemble des intentions de vote simulées sont en faveur du candidat
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|valeur_echantillon()
@@ -86,11 +86,11 @@
 
 - Class: mult_question
   Output: Réponse à la question 0h.
-  AnswerChoices: La première personne interrogée dans le futur échantillon est prète à voter pour le candidat;
-    La deuxième personne interrogée dans le futur échantillon est prète à voter pour le candidat;
-    Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individus correspond à voter en faveur du candidat;
-    Dans la première réalisation de l'échantillon, l'intention de vote simulée pour le deuxième individus correspond à voter en faveur du candidat;
-    L'ensemble des personnes intérogées dans le futur échantillon sont prètes à voter pour le candidat;
+  AnswerChoices: La première personne interrogée dans le futur échantillon est prête à voter pour le candidat;
+    La deuxième personne interrogée dans le futur échantillon est prête à voter pour le candidat;
+    Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individu correspond à voter en faveur du candidat;
+    Dans la première réalisation de l'échantillon, l'intention de vote simulée pour le deuxième individu correspond à voter en faveur du candidat;
+    L'ensemble des personnes interrogées dans le futur échantillon sont prêtes à voter pour le candidat;
     Dans la deuxième réalisation de l'échantillon, l'ensemble des intentions de vote simulées sont en faveur du candidat
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|valeur_p()
@@ -107,7 +107,7 @@
   Hint: Réponse à la question 0i.
 
 - Class: exact_question
-  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Quelle est votre groupe ?
+  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Quel est votre groupe ?
   CorrectAnswer: NULL
   AnswerTests: submit_log()
   Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.

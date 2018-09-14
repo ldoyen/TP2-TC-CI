@@ -65,10 +65,10 @@ Hist.EAP <- function(x,breaks,add=FALSE,xlim,ylim,rect=TRUE,col,lty=par("lty"),l
   y.contour <- c(0,rep(freq,rep(2,length(freq))),0)
   lines(x.contour,y.contour,lwd=lwd,lty=lty)
   abline(h=0)
-  if(add)
-    assign(".histo.EAP",list(x=x,pas=pas,x.bricks=x.bricks,y.bricks=y.bricks,centers=centers,counts=eff,col=col,x.contour=x.contour,y.contour=y.contour),envir=.randomEnv)
-  else
-    assign(".histo.EAP",list(x=x,pas=pas,x.bricks=x.bricks,y.bricks=y.bricks,centers=centers,counts=eff,col=col,xlim=xlim,ylim=ylim,x.contour=x.contour,y.contour=y.contour),envir=.randomEnv)
+  #if(add)
+  #  assign(".histo.EAP",list(x=x,pas=pas,x.bricks=x.bricks,y.bricks=y.bricks,centers=centers,counts=eff,col=col,x.contour=x.contour,y.contour=y.contour),envir=.randomEnv)
+  #else
+  #  assign(".histo.EAP",list(x=x,pas=pas,x.bricks=x.bricks,y.bricks=y.bricks,centers=centers,counts=eff,col=col,xlim=xlim,ylim=ylim,x.contour=x.contour,y.contour=y.contour),envir=.randomEnv)
 
   cumeff<-c(0,cumsum(eff))
   index<-sort(x,index.return=TRUE)$ix
@@ -160,8 +160,8 @@ submit_log <- function(){
 if(selection %in% 1:5){
   res<-TRUE
 
-  nom_etud <- readline("Quelle est votre nom de famille ? ")
-  demande_prenom<-"Quelle est votre pr\xE9nom ? "
+  nom_etud <- readline("Quel est votre nom de famille ? ")
+  demande_prenom<-"Quel est votre pr\xE9nom ? "
   Encoding(demande_prenom) <- "latin1"
   prenom_etud <- readline(demande_prenom)
 
@@ -203,7 +203,7 @@ if(selection %in% 1:5){
   e <- get("e", parent.frame())
   e$url_googleForm<-paste0(pre_fill_link, encoded_log)
   #browseURL(paste0(pre_fill_link, encoded_log)
-  readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrer.")
+  readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrée.")
   browseURL(e$url_googleForm)
 
   e <- get("e", parent.frame())
@@ -219,7 +219,7 @@ googleForm_log<-function(){
   if(e$val=="Non"){
     browseURL(e$url_googleForm)
   } else {
-   readline("Swirl va maintenant ouvrir un email dans votre logicel de messagerie. Tapez sur la touche Entrer.")
+   readline("Swirl va maintenant ouvrir un email dans votre logicel de messagerie. Tapez sur la touche Entrée.")
     email(e$adresse_email,e$sujet_email,e$corp_email)
   }
   return(e$val=="Oui")
@@ -310,7 +310,7 @@ assoc_briques<-function(){
       if(res){
         for(i in 1:(e$vs$m1)) {res<-res&((reponse[i])>=(e$info_hist$i_brique_min[i]))&((reponse[i])<=(e$info_hist$i_brique_max[i]))}
       } else {
-        pb<-"Chaque num\xE9ro de brique ne peut apparaitre q'une seule fois !"
+        pb<-"Chaque num\xE9ro de brique ne peut apparaître qu'une seule fois !"
         Encoding(pb) <- "latin1"
         message(pb)
       }
@@ -340,7 +340,7 @@ inf_briques<-function(){
         ok<-(get(e$vs$nom_data)[1:e$vs$m1])<=(e$vs$psup)
         res<-res&(length(reponse) == sum(ok))& prod(reponse<=max(e$info_hist$i_brique_max[which(ok)]))
       } else {
-        pb<-"Chaque num\xE9ro de brique ne peut apparaitre q'une seule fois !"
+        pb<-"Chaque num\xE9ro de brique ne peut apparaître qu'une seule fois !"
         Encoding(pb) <- "latin1"
         message(pb)
       }

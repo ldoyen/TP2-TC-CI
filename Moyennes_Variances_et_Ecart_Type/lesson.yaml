@@ -15,8 +15,8 @@
 - Class: mult_question
   Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP2.
     Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
-    En effet, si vous ne le faites pas vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
-    Etes vous pret à commencer cette leçon du TP2. Les questions suivantes correspondent à la partie intitulée "Moyennes, Variances et Ecart-Type".
+    En effet, si vous ne le faites pas, vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes-vous prêt à commencer cette leçon du TP2 ? Les questions suivantes correspondent à la partie intitulée "Moyennes, Variances et Ecart-Type".
   AnswerChoices: Oui;Non
   CorrectAnswer: NULL
   AnswerTests: ouvrir_sujet_TP()
@@ -38,16 +38,16 @@
 
 - Class: mult_question
   Output: Réponse à la question 2d. Avec quoi peut-on représenter cette moyenne sur l'histogramme de la question 2a ?
-  AnswerChoices: une aire; un trait verticale; un trait horizontale ; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
+  AnswerChoices: une aire; un trait vertical; un trait horizontal ; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
-  AnswerTests: test_passer()|omnitest(correctVal='un trait verticale')
+  AnswerTests: test_passer()|omnitest(correctVal='un trait vertical')
   Hint: Réponse à la question 2d. Avec quoi peut-on représenter cette moyenne sur l'histogramme de la question 2a ?
 
 - Class: exact_question
-  Output: Réponse à la question 2d (suite). A quelle abscisse doit-on positionner ce trait verticale représentant la moyenne (donner une valeur 0.0001 près)?
+  Output: Réponse à la question 2d (suite). A quelle abscisse doit-on positionner ce trait vertical représentant la moyenne (donner une valeur 0.0001 près)?
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|approx_moyenne()
-  Hint: Réponse à la question 2d(suite). A quelle abscisse doit-on positionner ce trait verticale représentant la moyenne (donner une valeur 0.0001 près)?
+  Hint: Réponse à la question 2d(suite). A quelle abscisse doit-on positionner ce trait vertical représentant la moyenne (donner une valeur 0.0001 près)?
 
 - Class: mult_question
   Output: Réponse à la question 2e.
@@ -77,7 +77,7 @@
 
 - Class: mult_question
   Output: Réponse à la question 2l. Avec quoi peut-on représenter cet écart-type sur l'histogramme de la question 2a ?
-  AnswerChoices: une aire; un trait verticale; un trait horizontale ; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
+  AnswerChoices: une aire; un trait vertical; un trait horizontal ; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|omnitest(correctVal='une double flèche horizontale')
   Hint: Réponse à la question 2l. Avec quoi peut-on représenter cet écart-type sur l'histogramme de la question 2a ?
@@ -110,7 +110,7 @@
 
 
 - Class: exact_question
-  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Quelle est votre groupe ?
+  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Quel est votre groupe ?
   CorrectAnswer: NULL
   AnswerTests: submit_log()
   Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.

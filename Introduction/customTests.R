@@ -99,8 +99,8 @@ submit_log <- function(){
 if(selection %in% 1:5){
   res<-TRUE
 
-  nom_etud <- readline("Quelle est votre nom de famille ? ")
-  demande_prenom<-"Quelle est votre pr\xE9nom ? "
+  nom_etud <- readline("Quel est votre nom de famille ? ")
+  demande_prenom<-"Quel est votre pr\xE9nom ? "
   Encoding(demande_prenom) <- "latin1"
   prenom_etud <- readline(demande_prenom)
 
@@ -142,7 +142,7 @@ if(selection %in% 1:5){
   e <- get("e", parent.frame())
   e$url_googleForm<-paste0(pre_fill_link, encoded_log)
   #browseURL(paste0(pre_fill_link, encoded_log)
-  readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrer.")
+  readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrée.")
   browseURL(e$url_googleForm)
 
   e <- get("e", parent.frame())
@@ -158,7 +158,7 @@ googleForm_log<-function(){
   if(e$val=="Non"){
     browseURL(e$url_googleForm)
   } else {
-   readline("Swirl va maintenant ouvrir un email dans votre logicel de messagerie. Tapez sur la touche Entrer.")
+   readline("Swirl va maintenant ouvrir un email dans votre logiciel de messagerie. Tapez sur la touche Entrée.")
     email(e$adresse_email,e$sujet_email,e$corp_email)
   }
   return(e$val=="Oui")
@@ -213,7 +213,7 @@ taille_echantillon<-function(){
 valeur_echantillon<-function(){
     e <- get("e", parent.frame())
     selection <- getState()$val
-    return(selection==(if(e$vs$qalea) "La première personne interrogée dans le futur échantillon est prète à voter pour le candidat" else "Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individus correspond à voter en faveur du candidat"))
+    return(selection==(if(e$vs$qalea) "La première personne interrogée dans le futur échantillon est prête à voter pour le candidat" else "Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individu correspond à voter en faveur du candidat"))
 }
 
 ON_valeur_echantillon<-function(){
@@ -230,7 +230,7 @@ taille_p<-function(){
 valeur_p<-function(){
     e <- get("e", parent.frame())
     selection <- getState()$val
-    return(selection==(if(e$vs$qalea) "Dans la deuxième réalisation de l'échantillon, l'ensemble des intentions de vote simulées sont en faveur du candidat" else "L'ensemble des personnes intérogées dans le futur échantillon sont prètes à voter pour le candidat"))
+    return(selection==(if(e$vs$qalea) "Dans la deuxième réalisation de l'échantillon, l'ensemble des intentions de vote simulées sont en faveur du candidat" else "L'ensemble des personnes interrogées dans le futur échantillon sont prêtes à voter pour le candidat"))
 }
 
 ON_valeur_p<-function(){

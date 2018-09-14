@@ -7,16 +7,16 @@
   Version: 1
 
 - Class: exact_question
-  Output: Entrer votre numéro d'étudiant.
+  Output: Entrez votre numéro d'étudiant.
   CorrectAnswer: NULL
   AnswerTests: num_etud()
-  Hint: Entrer votre numéro d'étudiant.
+  Hint: Entrez votre numéro d'étudiant.
 
 - Class: mult_question
   Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP2.
     Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
-    En effet, si vous ne le faites pas vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
-    Etes vous pret à commencer cette leçon du TP2. Les questions suivantes correspondent à la partie intitulée "Histogrammes et fréquences".
+    En effet, si vous ne le faites pas, vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes-vous prêt à commencer cette leçon du TP2 ? Les questions suivantes correspondent à la partie intitulée "Histogrammes et fréquences".
   AnswerChoices: Oui;Non
   CorrectAnswer: NULL
   AnswerTests: ouvrir_sujet_TP()
@@ -37,11 +37,11 @@
   AnswerTests: test_passer()|any_of_exprs(paste0("hist(",e$vs$nom_data,"[1:",e$vs$m1,"],freq=FALSE)",collapse=""),paste0("hist(",e$vs$nom_data,"[1:",e$vs$m1,"],freq=F)",collapse=""))
   Hint: Réponse à la question 1b.
     Faites attention au nom de la variable dans laquelle sont stockées sous R les réalisations de la variable d'intérêt.
-    Faites également attention au fait qu'on ne vous demande pas de représenter l'histogrammes de toutes les réalisations de la variable d'intérêt.
+    Faites également attention au fait qu'on ne vous demande pas de représenter l'histogramme de toutes les réalisations de la variable d'intérêt.
 
 - Class: mult_question
-  Output: On va maintenant représenter ajouter sur votre histogramme les briques correspondants correspondants aux différentes valeurs.
-    Etes-vous pret pour continuer ?
+  Output: On va maintenant représenter sur votre histogramme les briques correspondant aux différentes valeurs.
+    Etes-vous prêt pour continuer ?
   AnswerChoices: Oui;Non
   CorrectAnswer: Oui
   AnswerTests: briques()
@@ -65,7 +65,7 @@
   Output: Réponse à la question 1d, quelle est l'aire d'une brique ?
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|aire_brique()
-  Hint: Réponse à la question 1d, quelle est l'aire d'une brique ?.
+  Hint: Réponse à la question 1d, quelle est l'aire d'une brique ?
     On vous demande une valeur exacte. N'oubliez pas que R est aussi une calculatrice.
 
 - Class: exact_question
@@ -108,7 +108,7 @@
 
 - Class: mult_question
   Output: Réponse à la question 1k.
-  AnswerChoices: une aire; un trait verticale; un trait horizontale ; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
+  AnswerChoices: une aire; un trait vertical; un trait horizontal; une double flèche horizontale; une double flèche verticale; aucune réponse ne convient
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|omnitest(correctVal='une aire')
   Hint: Réponse à la question 1k.
@@ -128,7 +128,7 @@
 
 
 - Class: exact_question
-  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Quelle est votre groupe ?
+  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Quel est votre groupe ?
   CorrectAnswer: NULL
   AnswerTests: submit_log()
   Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.

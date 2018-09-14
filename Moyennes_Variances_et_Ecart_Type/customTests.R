@@ -94,8 +94,8 @@ submit_log <- function(){
 if(selection %in% 1:5){
   res<-TRUE
 
-  nom_etud <- readline("Quelle est votre nom de famille ? ")
-  demande_prenom<-"Quelle est votre pr\xE9nom ? "
+  nom_etud <- readline("Quel est votre nom de famille ? ")
+  demande_prenom<-"Quel est votre pr\xE9nom ? "
   Encoding(demande_prenom) <- "latin1"
   prenom_etud <- readline(demande_prenom)
 
@@ -137,7 +137,7 @@ if(selection %in% 1:5){
   e <- get("e", parent.frame())
   e$url_googleForm<-paste0(pre_fill_link, encoded_log)
   #browseURL(paste0(pre_fill_link, encoded_log)
-  readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrer.")
+  readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrée.")
   browseURL(e$url_googleForm)
 
   e <- get("e", parent.frame())
@@ -153,7 +153,7 @@ googleForm_log<-function(){
   if(e$val=="Non"){
     browseURL(e$url_googleForm)
   } else {
-   readline("Swirl va maintenant ouvrir un email dans votre logicel de messagerie. Tapez sur la touche Entrer.")
+   readline("Swirl va maintenant ouvrir un email dans votre logicel de messagerie. Tapez sur la touche Entrée.")
     email(e$adresse_email,e$sujet_email,e$corp_email)
   }
   return(e$val=="Oui")
