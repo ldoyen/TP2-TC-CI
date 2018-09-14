@@ -55,10 +55,10 @@
   Hint: Réponse à la question 3e. Avec quoi peut-on représenter ce quantile sur l'histogramme de la question 2a ?
 
 - Class: exact_question
-  Output: Réponse à la question 3e (suite). A quelle abscisse doit-on positionner ce trait vertical représentant le quantile (donner une valeur 0.0001 près)?
+  Output: Réponse à la question 3e (suite). A quelle abscisse doit-on positionner ce trait vertical représentant le quantile (donner une valeur avec une précision à au moins 0.0001 près)?
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|approx_quantile()
-  Hint: Réponse à la question 3e(suite). A quelle abscisse doit-on positionner ce trait vertical représentant le quantile (donner une valeur 0.0001 près)?
+  Hint: Réponse à la question 3e(suite). A quelle abscisse doit-on positionner ce trait vertical représentant le quantile (donner une valeur avec une précision à au moins 0.0001 près)?
 
 - Class: mult_question
   Output: Réponse à la question 3f.

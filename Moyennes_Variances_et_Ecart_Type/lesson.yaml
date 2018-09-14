@@ -44,10 +44,10 @@
   Hint: Réponse à la question 2d. Avec quoi peut-on représenter cette moyenne sur l'histogramme de la question 2a ?
 
 - Class: exact_question
-  Output: Réponse à la question 2d (suite). A quelle abscisse doit-on positionner ce trait vertical représentant la moyenne (donner une valeur 0.0001 près)?
+  Output: Réponse à la question 2d (suite). A quelle abscisse doit-on positionner ce trait vertical représentant la moyenne (donner une valeur avec une précision à au moins 0.0001 près)?
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|approx_moyenne()
-  Hint: Réponse à la question 2d(suite). A quelle abscisse doit-on positionner ce trait vertical représentant la moyenne (donner une valeur 0.0001 près)?
+  Hint: Réponse à la question 2d(suite). A quelle abscisse doit-on positionner ce trait vertical représentant la moyenne (donner une valeur avec une précision à au moins 0.0001 près)?
 
 - Class: mult_question
   Output: Réponse à la question 2e.
@@ -83,16 +83,16 @@
   Hint: Réponse à la question 2l. Avec quoi peut-on représenter cet écart-type sur l'histogramme de la question 2a ?
 
 - Class: exact_question
-  Output: Réponse à la question 2d (suite). A quelle abscisse doit se trouver le milieu de cette double flèche (donner une valeur 0.0001 près)?
+  Output: Réponse à la question 2d (suite). A quelle abscisse doit se trouver le milieu de cette double flèche (donner une valeur avec une précision à au moins 0.0001 près)?
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|approx_moyenne(FALSE)
-  Hint: Réponse à la question 2d(suite). A quelle abscisse doit se trouver le milieu de cette double flèche (donner une valeur 0.0001 près)?
+  Hint: Réponse à la question 2d(suite). A quelle abscisse doit se trouver le milieu de cette double flèche (donner une valeur avec une précision à au moins 0.0001 près)?
 
 - Class: exact_question
-  Output: Réponse à la question 2d (resuite). Quelle doit être la largeur de cette double flèche (donner une valeur 0.0001 près)?
+  Output: Réponse à la question 2d (resuite). Quelle doit être la largeur de cette double flèche (donner une valeur avec une précision à au moins 0.0001 près)?
   CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
   AnswerTests: test_passer()|approx_2sd()
-  Hint: Réponse à la question 2d(resuite). Quelle doit être la largeur de cette double flèche (donner une valeur 0.0001 près)?
+  Hint: Réponse à la question 2d(resuite). Quelle doit être la largeur de cette double flèche (donner une valeur avec une précision à au moins 0.0001 près)?
 
 - Class: mult_question
   Output: Réponse à la question 2m.
