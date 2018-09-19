@@ -213,13 +213,14 @@ taille_echantillon<-function(){
 valeur_echantillon<-function(){
     e <- get("e", parent.frame())
     selection <- getState()$val
-    return(selection==(if(e$vs$qalea) "La première personne interrogée dans le futur échantillon est prête à voter pour le candidat" else "Dans la deuxième réalisation de l'échantillon, l'intention de vote simulée pour le premier individu correspond à voter en faveur du candidat"))
+
+    return(if(e$vs$qalea) ((regexpr("re personne interrog",selection)!=-1) & (regexpr("futur",selection)!=-1)) else ((regexpr("Dans la deuxi",selection)!=-1) & (regexpr("intention de vote simul",selection)!=-1)))
 }
 
 ON_valeur_echantillon<-function(){
     e <- get("e", parent.frame())
     selection <- getState()$val
-    return(selection==(if(e$vs$qalea) "Non, car elle est aléatoire" else "Oui"))
+    return(if(e$vs$qalea) (regexpr("atoir",selection)!=-1) else (regexpr("Oui",selection)!=-1))
 }
 
 taille_p<-function(){
@@ -230,11 +231,13 @@ taille_p<-function(){
 valeur_p<-function(){
     e <- get("e", parent.frame())
     selection <- getState()$val
-    return(selection==(if(e$vs$qalea) "Dans la deuxième réalisation de l'échantillon, l'ensemble des intentions de vote simulées sont en faveur du candidat" else "L'ensemble des personnes interrogées dans le futur échantillon sont prêtes à voter pour le candidat"))
+    #readline(selection)
+    #readline("L'ensemble des personnes interrogées dans le futur échantillon sont prêtes à voter pour le candidat")
+    return(if(e$vs$qalea) ((regexpr("Dans la deuxi",selection)!=-1) & (regexpr("ensemble des intentions de vote",selection)!=-1)) else ((regexpr("ensemble des personnes interrog",selection)!=-1) & (regexpr("futur",selection)!=-1)) )
 }
 
 ON_valeur_p<-function(){
     e <- get("e", parent.frame())
     selection <- getState()$val
-    return(selection==(if(e$vs$qalea) "Oui" else "Non, car elle est aléatoire"))
+    return(if(e$vs$qalea) (regexpr("Oui",selection)!=-1) else (regexpr("atoir",selection)!=-1) )
 }
