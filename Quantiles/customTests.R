@@ -54,7 +54,7 @@ num_etud<-function(){
 	pinf=c(0.18,0.2,0.22,0.24,0.26),
 	psup=c(0.22,0.24,0.26,0.28,0.3),
 	nom_data=c("pAest","pB_est","pC_Est","pDEst","p_X_est"),
-	pageWebsujet=c("https://toltex.u-ga.fr/VAM/TP2/sujet.html","https://toltex.u-ga.fr/VAM/TP2/sujet_tp.html","https://toltex.u-ga.fr/VAM/TP2/sujet__tp.html","https://toltex.u-ga.fr/VAM/TP2/sujet_tp2.html","https://toltex.u-ga.fr/VAM/TP2/sujet__tp2.html"),
+	pageWebsujet=c("https://toltex.imag.fr/VAM/TP2/sujet.html","https://toltex.imag.fr/VAM/TP2/sujet_tp.html","https://toltex.imag.fr/VAM/TP2/sujet__tp.html","https://toltex.imag.fr/VAM/TP2/sujet_tp2.html","https://toltex.imag.fr/VAM/TP2/sujet__tp2.html"),
 	Y=c("Y^A","Y^B","Y^C","Y^D","Y^X"),
 	y=c("y^A","y^B","y^C","y^D","y^X"),
 	qalea=c(FALSE,TRUE,TRUE,FALSE,FALSE))
