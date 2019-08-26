@@ -27,7 +27,13 @@ getLog <- function(){
 Choix_sujet_etudiant<-function(num_etud,nb_sujet=5){
   #return(floor((num_etud-floor(num_etud/100)*100)/20))
   set.seed(num_etud)
-  return(sample(1:nb_sujet,1))
+  #return(sample(1:nb_sujet,1))
+  #Pour garantir que les redoublants n'ont pas le meme sujet que l annee derniere
+  #L'annee prochaine reprendre l'instruction precedente pouir le garantir
+  sujet_prec<-sample(1:nb_sujet,1)
+  sujet_indice<-sample(1:(nb_sujet-1),1)
+  sujet_possibles<-setdiff(1:nb_sujet,sujet_prec)
+  return(sujet_possibles[sujet_indice])
 }
 
 genere_data<-function(vs){
