@@ -46,17 +46,17 @@ genere_data<-function(vs){
 num_etud<-function(){
   ###Les differents sujets
   variable_sujet<-list(
-	m1=c(17,18,19,21,22),
-	m2=c(110,120,130,140,150),
-	n=c(125,200,250,400,500),
-	p0=c(0.2,0.22,0.24,0.26,0.28),
-	pinf=c(0.18,0.2,0.22,0.24,0.26),
-	psup=c(0.22,0.24,0.26,0.28,0.3),
-	nom_data=c("pAest","pB_est","pC_Est","pDEst","p_X_est"),
-	pageWebsujet=c("https://toltex.imag.fr/VAM/TP2/sujet.html","https://toltex.imag.fr/VAM/TP2/sujet_tp.html","https://toltex.imag.fr/VAM/TP2/sujet__tp.html","https://toltex.imag.fr/VAM/TP2/sujet_tp2.html","https://toltex.imag.fr/VAM/TP2/sujet__tp2.html"),
-	Y=c("Y^A","Y^B","Y^C","Y^D","Y^X"),
-	y=c("y^A","y^B","y^C","y^D","y^X"),
-	qalea=c(FALSE,TRUE,TRUE,FALSE,FALSE))
+  m1=c(17,18,19,21,22),
+  m2=c(110,120,130,140,150),
+  n=c(125,200,250,400,500),
+  p0=c(0.2,0.22,0.24,0.26,0.28),
+  pinf=c(0.18,0.2,0.22,0.24,0.26),
+  psup=c(0.22,0.24,0.26,0.28,0.3),
+  nom_data=c("pAest","pB_est","pC_Est","pDEst","p_X_est"),
+  pageWebsujet=c("https://toltex.imag.fr/VAM/TP2/sujet.html","https://toltex.imag.fr/VAM/TP2/sujet_tp.html","https://toltex.imag.fr/VAM/TP2/sujet__tp.html","https://toltex.imag.fr/VAM/TP2/sujet_tp2.html","https://toltex.imag.fr/VAM/TP2/sujet__tp2.html"),
+  Y=c("Y^A","Y^B","Y^C","Y^D","Y^X"),
+  y=c("y^A","y^B","y^C","y^D","y^X"),
+  qalea=c(FALSE,TRUE,TRUE,FALSE,FALSE))
   ####
 
   e <- get("e", parent.frame())
@@ -75,7 +75,7 @@ num_etud<-function(){
       set.seed(num_etud)
       vs<-variable_sujet
       for (i in 1:length(vs)){
-	       vs[[i]]<-vs[[i]][e$num_sujet]
+         vs[[i]]<-vs[[i]][e$num_sujet]
       }
       e$vs<-vs
       assign(vs$nom_data,genere_data(vs),.GlobalEnv)
@@ -143,38 +143,163 @@ if(selection %in% 1:5){
   write.csv(log_tbl, file = temp, row.names = FALSE)
   encoded_log <- base64encode(temp)
   e <- get("e", parent.frame())
+  e$encoded_log<-encoded_log
+  e$log_tbl<-log_tbl
   e$url_googleForm<-paste0(pre_fill_link, encoded_log)
   #browseURL(paste0(pre_fill_link, encoded_log)
   readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrée.")
   browseURL(e$url_googleForm)
 
   e <- get("e", parent.frame())
-    if(selection %in% c(1,2,3)) e$adresse_email<-"laurent.doyen@iut2.univ-grenoble-alpes.fr" else e$adresse_email<-"marie-jose.martinez@iut2.univ-grenoble-alpes.fr"
+    if(selection %in% c(3,4,5)) e$adresse_email<-"laurent.doyen@iut2.univ-grenoble-alpes.fr" else e$adresse_email<-"marie-jose.martinez@iut2.univ-grenoble-alpes.fr"
     e$sujet_email<-paste0("**TP2-TC-CI**"," G",selection,", ",log_$lesson_name,", ", nom_etud,collapse="")
     e$corp_email<-encoded_log
   }
   return(res)
 }
 
+submit_log_alt <- function(){
+  e <- get("e", parent.frame())
+
+  res<-FALSE
+  selection <- getState()$val
+#if(selection %in% 1:5){
+  res<-TRUE
+
+  nom_etud <- readline("Quel est votre nom de famille ? ")
+  demande_prenom<-"Quel est votre pr\xE9nom ? "
+  Encoding(demande_prenom) <- "latin1"
+  prenom_etud <- readline(demande_prenom)
+
+  # Please edit the link below
+  #pre_fill_link1 <- "https://docs.google.com/forms/d/e/1FAIpQLSeWzSmQyQa5YE-MUL_0DxzD5RShhaKbWBS63Bu0AmdbxwmI2w/viewform?usp=pp_url&entry.1536247898="
+  #pre_fill_link2 <- "https://docs.google.com/forms/d/e/1FAIpQLSfgztQT4bQTcgAuTlpMtVD5vQfAcLz5TWXqdS-D24Ctog4TFg/viewform?usp=pp_url&entry.1449157816="
+  #pre_fill_link3 <- "https://docs.google.com/forms/d/e/1FAIpQLSc-MLNgzzLzS6znCGlIMnSpBwbfqsbmJYGItyOxL0ucInW3YQ/viewform?usp=pp_url&entry.947620631="
+  #pre_fill_link4 <- "https://docs.google.com/forms/d/e/1FAIpQLSdHFMGd0kZ0K3n3wWX85Ka1FMonKLm1dF409NbjgIL0U0kMKA/viewform?usp=pp_url&entry.1829019151="
+  #pre_fill_link5 <- "https://docs.google.com/forms/d/e/1FAIpQLSdXGObsIGsQlhgQ4UwxknYANU2EAlm8cbakMVxpNFD9kmsmgg/viewform?usp=pp_url&entry.958732492="
+
+  #pre_fill_link <- switch(selection,
+  #  pre_fill_link1,
+  #  pre_fill_link2,
+  #  pre_fill_link3,
+  #  pre_fill_link4,
+  #  pre_fill_link5
+  #)
+
+  pre_fill_link<-"https://docs.google.com/forms/d/e/1FAIpQLSdhpHL2m8SzVFhACBJn6bx4DlH_xseFbkcX5Rc3Jm4sKiCSVQ/viewform?usp=pp_url&entry.642680298="
+
+  # Do not edit the code below
+  if(!grepl("=$", pre_fill_link)){
+    pre_fill_link <- paste0(pre_fill_link, "=")
+  }
+
+  p <- function(x, p, f, l = length(x)){if(l < p){x <- c(x, rep(f, p - l))};x}
+
+  e$log$skipped[1:length(e$log$mon_skip)]<-e$log$mon_skip
+
+  temp <- tempfile()
+  log_ <- getLog()
+  nrow_ <- max(unlist(lapply(log_, length)))
+
+  log_tbl <- data.frame( p(log_$question_number, nrow_, NA),
+                         p(log_$correct, nrow_, NA),
+                         p(log_$attempt, nrow_, NA),
+                         p(log_$skipped, nrow_, NA),
+                         p(log_$datetime, nrow_, NA),
+                        stringsAsFactors = FALSE)
+  names(log_tbl) <- c(e$num_etud, nom_etud, prenom_etud,log_$lesson_name,e$num_sujet)
+  write.csv(log_tbl, file = temp, row.names = FALSE)
+  encoded_log <- base64encode(temp)
+  e <- get("e", parent.frame())
+  e$encoded_log<-encoded_log
+  e$log_tbl<-log_tbl
+  e$url_googleForm<-paste0(pre_fill_link, encoded_log)
+  #browseURL(paste0(pre_fill_link, encoded_log)
+  readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrée.")
+  browseURL(e$url_googleForm)
+
+  e <- get("e", parent.frame())
+    #if(selection %in% c(1,2,3)) e$adresse_email<-"laurent.doyen@iut2.univ-grenoble-alpes.fr" else e$adresse_email<-"marie-jose.martinez@iut2.univ-grenoble-alpes.fr"
+    e$adresse_email<-"laurent.doyen@iut2.univ-grenoble-alpes.fr"
+    e$sujet_email<-paste0("**TP2-TC-CI** Alt, ",log_$lesson_name,", ", nom_etud,collapse="")
+    e$corp_email<-encoded_log
+  #}
+  return(res)
+}
+
 googleForm_log<-function(){
   e <- get("e", parent.frame())
-  if(e$val=="Non"){
+  if(regexpr("Google Form",e$val)!=-1){
+    res<-FALSE
     browseURL(e$url_googleForm)
   } else {
+    res<-TRUE
    readline("Swirl va maintenant ouvrir un email dans votre logiciel de messagerie. Tapez sur la touche Entrée.")
     email(e$adresse_email,e$sujet_email,e$corp_email)
   }
-  return(e$val=="Oui")
+  return(res)
 }
 
 
 email_log<-function(){
   e <- get("e", parent.frame())
-  if(e$val=="Non"){
+  res<-TRUE
+  if(regexpr("email",e$val)!=-1){
+    res<-FALSE
     email(e$adresse_email,e$sujet_email,e$corp_email)
   }
-  return(e$val=="Oui")
+  return(res)
 }
+
+sauve_log<-function(){
+  demande<-"Appuyez sur Entr\xE9, puis choississez un r\xE9pertoire dans lequel sauver votre cl\xE9. Attention, dans les salles machine de l'IUT, choississez un r\xE9pertoire personnel."
+  Encoding(demande) <- "latin1"
+  rep <- readline(demande)
+  path <- choose_dir()
+  if(length(path)==0){
+    return(FALSE)
+  } else {
+    setwd(path)
+    e <- get("e", parent.frame())
+    encoded_log<-e$encoded_log
+    log_tbl<-e$log_tbl
+    log_ <- getLog()
+    e$fichier<-paste0("TP2",log_$lesson_name,".R")
+
+    save(log_tbl,encoded_log,file=e$fichier)
+    demande<-paste0("Votre cl\xE9, est sauv\xE9 dans le fichier ",e$fichier," Tapez sur la touche Entr\xE9e pour continuer.")
+    Encoding(demande) <- "latin1"
+    rep <- readline(demande)
+    return(TRUE)
+  }
+}
+
+qsauve_log<-function(){
+e <- get("e", parent.frame())
+if(e$val=="Oui"){
+  return(TRUE)
+} else {
+  demande<-"Appuyez sur Entr\xE9, puis choississez un r\xE9pertoire dans lequel sauver votre cl\xE9. Attention, dans les salles machine de l'IUT, choississez un r\xE9pertoire personnel."
+  Encoding(demande) <- "latin1"
+  rep <- readline(demande)
+  path <- choose_dir()
+  if(length(path)==0){
+    return(FALSE)
+  } else {
+    setwd(path)
+    e <- get("e", parent.frame())
+    encoded_log<-e$encoded_log
+    log_tbl<-e$log_tbl
+
+    save(log_tbl,encoded_log,file=e$fichier)
+    demande<-paste0("Votre cl\xE9, est sauv\xE9 dans le fichier ",e$fichier," Tapez sur la touche Entr\xE9e pour continuer.")
+    Encoding(demande) <- "latin1"
+    rep <- readline(demande)
+    return(FALSE)
+  }
+}
+}
+
 
 #answear test to known if the value of the answear is between b_inf and b_sup
 test_between <- function(b_inf,b_sup){

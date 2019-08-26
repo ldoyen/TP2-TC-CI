@@ -105,7 +105,7 @@
   Output: Swirl a ouvert une page Google Form dans votre navigateur web. Vous devez valider cette page (sans rien y modifier) en appuyant sur le bouton ENVOYER.
     Nous vous rappelons que vous ne pouvez valider qu'une seule fois chaque leçon !
     Avez-vous validé votre Google Form ?
-  AnswerChoices: Oui;Non
+  AnswerChoices: Oui;Non, je souhaite que swirl tente de réouvrir un Google Form; Non, j'ai éssayé plusieur fois ca ne fonctionne pas
   CorrectAnswer: NULL
   AnswerTests: googleForm_log()
   Hint: Vous devez valider le Google Form, sans le modifier. L'avez-vous fait ?
@@ -113,10 +113,34 @@
 - Class: mult_question
   Output: Swirl a maintenant créé un email dans votre utilitaire de messagerie. Vous devez envoyer cet email, sans le modifier, pour finir de valider cette leçon du TP.
     Avez-vous envoyé l'email créé par swirl ?
-  AnswerChoices: Oui;Non
+  AnswerChoices: Oui;Non, je souhaite que swirl tente de réouvrir un email; Non, j'ai éssayé plusieur fois ca ne fonctionne pas
   CorrectAnswer: NULL
   AnswerTests: email_log()
   Hint: Vous devez envoyer l'email créé par swirl dans votre messagerie, sans le modifier. L'avez-vous fait ?
+
+- Class: mult_question
+  Output: Swirl va maintenant sauvegarder le contenu de votre travail dans votre ordinateur.
+    Si vous n'avez réussi ni à valider votre Google Form, ni à envoyer l'email généré automatiquement par swirl, vous devrez, par vous même, envoyer par email le fichier qui va se créer
+    à votre enseignant de TD (laurent.doyen@iut2.univ-grenoble-alpes.fr ou marie-jose.martinez@iut2.univ-grenoble-alpes.fr).
+    Pour autant, dans tout les cas, vous devez garder sur votre ordinateur ce fichier, il peut vous être demandé en cas de problème.
+    Si vous travaillez dans les salles libre service de l'IUT, vous devez choisir de stocker ce fichier dans votre espace personnel afin de le conserver.
+    Si vous ne possédez plus ce fichier alors qu'il vous est demandé, vous aurez 0 aux leçons correspondantes.
+    Souhaitez-vous continuer ?
+  AnswerChoices: Oui;Oui, je n'ai pas le choix
+  CorrectAnswer: NULL
+  AnswerTests: sauve_log()
+  Hint: Répondez Oui, vous n'avez pas le choix !
+
+- Class: mult_question
+  Output: Cherchez le fichier contenant votre clé. Est-il dans un espace personnel ?
+    Si vous n'avez réussi ni à valider votre Google Form, ni à envoyer l'email généré automatiquement par swirl, vous devez envoyer par email ce fichier
+    à votre enseignant de TD (laurent.doyen@iut2.univ-grenoble-alpes.fr ou marie-jose.martinez@iut2.univ-grenoble-alpes.fr).
+    Avez-vous fait les étapes décrite ci dessus ?
+  AnswerChoices: Oui;Non, je ne trouve pas ce fichier
+  CorrectAnswer: NULL
+  AnswerTests: qsauve_log()
+  Hint: Si vous n'avez réussi ni à valider votre Google Form, ni à envoyer l'email généré automatiquement par swirl, avez-vous envoyé le fichier contenant votre clé ?
+
 
 - Class: text
   Output: Bravo, vous avez maintenant fini votre TP2 !
