@@ -426,7 +426,7 @@ num_briques<-function(){
 
 assoc_briques<-function(){
   e <- get("e", parent.frame())
-  if(grepl("passer()",paste0(e$val,collapse = ""))){
+  if(grepl("passer",paste0(e$val,collapse = ""))){
     res<-TRUE
     if(length(e$log$mon_skip)>0) e$log$skipped[1:length(e$log$mon_skip)]<-e$log$mon_skip
     e$log$mon_skip<-e$log$skipped
@@ -443,7 +443,7 @@ assoc_briques<-function(){
       if(res){
         for(i in 1:(e$vs$m1)) {res<-res&((reponse[i])>=(e$info_hist$i_brique_min[i]))&((reponse[i])<=(e$info_hist$i_brique_max[i]))}
       } else {
-        pb<-"Chaque num\xE9ro de brique ne peut apparaître qu'une seule fois !"
+        pb<-"Chaque num\xE9ro de brique ne peut appara\xE4tre qu'une seule fois !"
         Encoding(pb) <- "latin1"
         message(pb)
       }
@@ -455,7 +455,7 @@ assoc_briques<-function(){
 
 inf_briques<-function(){
   e <- get("e", parent.frame())
-  if(grepl("passer()",paste0(e$val,collapse = ""))){
+  if(grepl("passer",paste0(e$val,collapse = ""))){
     res<-TRUE
     if(length(e$log$mon_skip)>0) e$log$skipped[1:length(e$log$mon_skip)]<-e$log$mon_skip
     e$log$mon_skip<-e$log$skipped
