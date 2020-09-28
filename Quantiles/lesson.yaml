@@ -14,9 +14,9 @@
 
 - Class: mult_question
   Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP2.
-    Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
-    En effet, si vous ne le faites pas, vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
-    Etes-vous prêt à commencer cette leçon du TP2 ? Les questions suivantes correspondent à la partie intitulée "Quantiles".
+    Il vous est vivement recommandé de ne pas interompre cette leçon avant de l'avoir validé. 
+    En effet, le fait de reprendre la suite de cette leçon après avoir arreté swirl peut créer des disfonctionnements et vous obliger, au final, à reprendre la leçon depuis le début.
+    Etes-vous prêt à commencer cette leçon du TP2 ? Les questions suivantes correspondent à la partie intitulée "Histogrammes et fréquences".
   AnswerChoices: Oui;Non
   CorrectAnswer: NULL
   AnswerTests: ouvrir_sujet_TP()

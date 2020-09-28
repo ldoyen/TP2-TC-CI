@@ -157,7 +157,7 @@ if(selection %in% 1:5){
   browseURL(e$url_googleForm)
 
   e <- get("e", parent.frame())
-    if(selection %in% c(3,4,5)) e$adresse_email<-"laurent.doyen@iut2.univ-grenoble-alpes.fr" else e$adresse_email<-"marie-jose.martinez@iut2.univ-grenoble-alpes.fr"
+    if(selection %in% c(2,3,4)) e$adresse_email<-"laurent.doyen@univ-grenoble-alpes.fr" else e$adresse_email<-"marie-jose.marcoux@univ-grenoble-alpes.fr"
     e$sujet_email<-paste0("**TP2-TC-CI**"," G",selection,", ",log_$lesson_name,", ", nom_etud,collapse="")
     e$corp_email<-encoded_log
   }
